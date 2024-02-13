@@ -1,0 +1,165 @@
+﻿<!doctype html>
+<html lang="he" dir="rtl">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <title>פינת חי</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link href="styles/reset.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+
+    <!-- JS -->
+    <script src="jScripts/javascript.js"></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <nav>
+            <button id="nav-button" class="btn-mobile" onclick="toggleNav()"><img src="images/nav-icon.svg"
+                    alt="ניווט"></button>
+            <ul id="main-nav" class="flex-container-nav hide-mobile">
+          <!--
+            <button id="close-nav-button" class="btn-mobile" onclick="toggleNav()">
+             <img src="images/nav-close.svg" alt="סגירה">
+            </button>
+            -->
+
+                <li><a href="#">דף הבית</a></li>
+                <li><a href="#">הצוות שלנו</a></li>
+                <li><a href="#">פינות חי בארץ</a></li>
+                <li><a href="#">צור קשר</a></li>
+            </ul>
+        </nav>
+        <header class="header">
+
+            <h1>
+                פינת חי
+            </h1>
+
+        </header>
+
+        <main>
+            
+
+            <input type="text" id="searchInput" placeholder="חיפוש.." onkeyup="performSearch()">
+           
+
+            <!-- Placeholder for search results -->
+          
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    הכל
+                </button>
+                <div class="dropdown-menu" aria-labelledby="filter-dropdown">
+                    <a class="dropdown-item" href="#" onclick="setFilter('הכל')">הכל</a>
+                    <a class="dropdown-item" href="#" onclick="setFilter('יונקים')">יונקים</a>
+                    <a class="dropdown-item" href="#" onclick="setFilter('עופות')">עופות</a>
+                    <a class="dropdown-item" href="#" onclick="setFilter('זוחלים')">זוחלים</a>
+            </div>
+            </div>
+
+
+            <div id="noResults" style="display: none;">לא נמצאה חיה מתאימה</div>
+            <ul id="animal-list" class="flex-container-subjects">
+                  <!-- The Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="fullText">Some full text here...</p>
+    </div>
+  </div>
+  
+                                             
+                    <li class="animal זוחלים">
+                        <span class="hidden"></span>
+                        <h3>נחש</h3>
+                        <img class="imgsize" src="images/נחש צפע.jpeg" alt="תמונה">
+                        <p>הצפע מצוי הוא נחש ארסי נפוץ במרכז ובצפון ישראל, וגם בסוריה, בירדן ובלבנון. הוא פעיל בעיקר בלילה, אך לעיתים פועל גם בשעות היום. בישראל, הוא אחד מתשעת הנחשים הארסיים הבולטים ביותר.</p>
+                        <button class="btn btn-primary" onclick="showModal(this)">המשך קריאה </button>
+                    </li>
+                
+                <li class="animal יונקים">
+                    <span class="hidden"></span>
+                        <h3>סוס פוני</h3>
+                        <img class="imgsize" src="images/סוס פוני.jpg" alt="תמונה">
+                        <p>פוני הוא זן סוס ביתי קטן שגובהו הזכרים אינו עולה על 1.47 מטר. הם מפורסמים בעור עבה וכבד, רגליים קצרות, עצמות כבדות, ראש קצר ומצח רחב. הם מתקיימים כאנשי חיים אינטליגנטיים. </p>
+                        <button class="btn btn-primary" onclick="showModal(this)">המשך קריאה </button>                    
+                </li>
+                <li class="animal זוחלים">
+                    <span class="hidden"></span>
+                        <h3>צב</h3>
+                        <img class="imgsize" src="images/צב יבשה.jpg" alt="תמונה">
+                        <p>צב יבשה הוא המין השכיח ביותר בישראל, צבעו חום-צהבהב ואורכו עד 25 ס"מ. מתגורר במקומות עם צמחייה או סלעים, ובחורף מתחבר בקרקע. יכול לחיות עד כ-60 שנה, ומזוןו מכיל בעיקר עלים וגם תולעים וחרקים קטנים.</p>
+                        <button class="btn btn-primary" onclick="showModal(this)">המשך קריאה</button>                    
+                </li>
+                <li class="animal זוחלים">
+                    <span class="hidden"></span>
+                        <h3>איגואנה</h3>
+                        <img class="imgsize" src="images/איגואנה.jpg" alt="תמונה">
+                        <p>איגואנה מצויה היא זוחל שמגיע בעיקר מאמריקה הדרומית והמרכזית. היא מגיעה לאורך של כ-1.66 מטרים ומשקל של כ-10 קילוגרם, אך בשביה יכולה להגיע לאורך של כ-2 מטרים ויותר. אורך חייה בטבע עשוי להגיע עד חמישה עשר שנה.</p>
+                        <button class="btn btn-primary" onclick="showModal(this)">המשך קריאה</button>                    
+                </li>
+                <li class="animal יונקים">
+                    <span class="hidden"></span>
+                        <h3>שרקן</h3>
+                        <img class="imgsize" src="images/שרקן.jpg" alt="תמונה">
+                        <p>אורך גופו של שרקן בוגר מגיע עד 20 סנטימטר וצבע פרוותו חום, כתום, לבן, אפור, שחור או שילוב של צבעים אלה. לשרקן אין זנב. בגפיים האחוריות יש לו שלוש אצבעות ובקדמיות -ארבע.</p>
+                        <button class="btn btn-primary" onclick="showModal(this)">המשך קריאה</button>                    
+                </li>
+                <li class="animal יונקים">
+                    <span class="hidden"></span>
+                        <h3>עכבר</h3>
+                        <img class="imgsize" src="images/עכבר.jpg" alt="תמונה">
+                        <p>עכבר הוא יונק קטן מסדרת המכרסמים, מצוי בכמעט כל העולם וחי בקרבת האדם. אורכם משתלב בין 9 ל־12 ס"מ, עם גופם מכוסה בפרווה חום עד לבן וצמחוניים לרוב, אך יכולים לאכול כל סוגי המזון.</p>
+                        <button class="btn btn-primary" onclick="showModal(this)">המשך קריאה</button>                    
+                </li>
+                <li class="animal יונקים">
+                    <span class="hidden"></span>
+                        <h3>צ'ינצ'ילה</h3>
+                        <img class="imgsize" src="images/צינצילה.jpg" alt="תמונה">
+                        <p>צ'ינצ'ילה, מכרסם קטן מדרום אמריקה, חי בקבוצות ומשפחות בסביבת סלעים והרים, משדרת צלילים וחריקות לתקשורת, בעלת יכולות אתלטיות ותוחלת חיים בין 15 ל-20 שנה.</p>
+                        <button class="btn btn-primary"  onclick="showModal(this)">המשך קריאה</button>                    
+                </li>
+                <li class="animal עופות">
+                    <span class="hidden"></span>
+                        <h3>תוכי</h3>
+                        <img class="imgsize" src="images/תוכי גאקו.jpg" alt="תמונה">
+                        <p>התוכי ג'אקו, הידוע גם בשם 'אפור אפריקאי', נחשב לחייב קל לאילוף ומשתלב טוב עם תוכים אחרים, עם תוחלת חיים של עד 60 שנה, יכולת דיבור מעולה, אך דורש תשומת לב רבה.</p>
+                        <button class="btn btn-primary"  onclick="showModal(this)">המשך קריאה</button>                    
+                </li>
+                <li class="animal יונקים">
+                    <span class="hidden"></span>
+                        <h3>ארנב</h3>
+                        <img class="imgsize" src="images/ארנב.jpg" alt="תמונה">
+                        <p>לארנבון יש ארבע שיניים חותכות וחדות, שניים למעלה ושניים למטה, ושני שיניים נוספות למעלה מאחורי השיניים החותכות. יש להם אזניים ארוכות, רגליים אחוריות גדולות, וזנב קצר ופלומתי.</p>
+                        <button class="btn btn-primary"  onclick="showModal(this)">המשך קריאה</button>                    
+                </li>
+                <li class="animal יונקים">
+                    <span class="hidden"></span>
+                        <h3>כלב</h3>
+                        <img class="imgsize" src="images/כלב גולדן.jpg" alt="תמונה">
+                        <p>הגולדן רטריבר הוא כלב נפוץ ואהוב בישראל, עם מבנה גוף אתלטי ופרוות זהובה. הוא פעיל, נעים וקל לאילוף, מתאים לשחק ומתפקד היטב בסביבה משפחתית, ומתאים לתפקידים כמסייע תרפיה ונחייה.</p>
+                        <button class="btn btn-primary"  onclick="showModal(this)">המשך קריאה</button>                    
+                </li>
+
+
+                
+            </ul>
+
+
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+
+</html>
